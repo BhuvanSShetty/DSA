@@ -56,3 +56,8 @@ int main() {
     }
     return 0;
 }
+
+// 1. Find pivot
+// 2. Find next greater
+// 3. Swap
+// 4. Reverse suffix
