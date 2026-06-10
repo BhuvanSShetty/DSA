@@ -1,0 +1,360 @@
+===================================================
+BINARY SEARCH
+===================================================
+
+Keywords:
+- sorted
+- search
+- minimum possible
+- maximum possible
+- kth
+- answer space
+
+Brain:
+Can I eliminate half?
+
+---------------------------------------------------
+
+===================================================
+SLIDING WINDOW
+===================================================
+
+Keywords:
+- subarray
+- substring
+- longest
+- shortest
+- continuous
+- window
+
+Brain:
+Expand → Shrink
+
+---------------------------------------------------
+
+===================================================
+TWO POINTERS
+===================================================
+
+Keywords:
+- pair
+- sorted array
+- opposite ends
+- two indices
+
+Brain:
+Move left/right pointer
+
+---------------------------------------------------
+
+===================================================
+PREFIX SUM
+===================================================
+
+Keywords:
+- subarray sum
+- range sum
+- sum = k
+- zero sum
+- cumulative
+
+Brain:
+Precompute sums
+
+---------------------------------------------------
+
+===================================================
+KADANE'S ALGORITHM
+===================================================
+
+Keywords:
+- maximum sum
+- largest contiguous
+- best subarray
+
+Brain:
+Throw away bad prefix
+
+---------------------------------------------------
+
+===================================================
+XOR
+===================================================
+
+Keywords:
+- missing
+- repeating
+- single number
+- unique number
+
+Brain:
+Cancellation
+
+Properties:
+a ^ a = 0
+a ^ 0 = a
+
+---------------------------------------------------
+
+===================================================
+FLOYD CYCLE DETECTION
+===================================================
+
+Keywords:
+- duplicate
+- 1 to n
+- constant space
+- cannot modify
+
+Brain:
+Cycle exists
+
+---------------------------------------------------
+
+===================================================
+MOORE VOTING
+===================================================
+
+Keywords:
+- majority
+- more than half
+- frequent element
+
+Brain:
+Cancel everyone else
+
+---------------------------------------------------
+
+===================================================
+MODIFIED MOORE VOTING
+===================================================
+
+Keywords:
+- more than n/3
+- majority II
+
+Brain:
+At most 2 answers
+
+---------------------------------------------------
+
+===================================================
+DUTCH NATIONAL FLAG
+===================================================
+
+Keywords:
+- 0 1 2
+- sort colors
+- three categories
+- partition
+
+Brain:
+Low → Mid → High
+
+---------------------------------------------------
+
+===================================================
+MERGE SORT COUNTING
+===================================================
+
+Keywords:
+- count pairs
+- i < j
+- inversions
+- reverse pairs
+
+Brain:
+Count while merging
+
+Problems:
+- Count Inversions
+- Reverse Pairs
+
+---------------------------------------------------
+
+===================================================
+DYNAMIC PROGRAMMING (GENERAL)
+===================================================
+
+Keywords:
+- ways
+- count ways
+- minimum
+- maximum
+- optimal
+
+Brain:
+Repeated subproblem?
+
+Questions:
+- Can I store previous answers?
+- Am I solving the same thing again?
+
+---------------------------------------------------
+
+===================================================
+GRID DP
+===================================================
+
+Keywords:
+- grid
+- matrix
+- robot
+- path
+
+Brain:
+dp[i][j]
+
+Examples:
+- Unique Paths
+- Minimum Path Sum
+
+---------------------------------------------------
+
+===================================================
+COMBINATORICS
+===================================================
+
+Keywords:
+- arrangements
+- choose
+- count paths
+
+Brain:
+nCr
+
+Examples:
+- Unique Paths (Math Solution)
+
+---------------------------------------------------
+
+===================================================
+BINARY EXPONENTIATION
+===================================================
+
+Keywords:
+- power
+- x^n
+- large exponent
+
+Brain:
+Square repeatedly
+
+Complexity:
+O(log n)
+
+---------------------------------------------------
+
+===================================================
+HEAP / PRIORITY QUEUE
+===================================================
+
+Keywords:
+- k largest
+- k smallest
+- top k
+- stream
+- priority
+
+Brain:
+Heap
+
+Examples:
+- Top K Frequent Elements
+- Kth Largest Element
+
+---------------------------------------------------
+
+===================================================
+GRAPH BFS
+===================================================
+
+Keywords:
+- shortest path
+- minimum moves
+- levels
+- unweighted graph
+
+Brain:
+BFS
+
+Examples:
+- Rotten Oranges
+- Word Ladder
+
+---------------------------------------------------
+
+===================================================
+GRAPH DFS
+===================================================
+
+Keywords:
+- connected components
+- explore
+- traverse
+- islands
+
+Brain:
+DFS
+
+Examples:
+- Number of Islands
+- Connected Components
+
+---------------------------------------------------
+
+===================================================
+30 SECOND INTERVIEW CHEAT SHEET
+===================================================
+
+Sorted?
+→ Binary Search
+
+Subarray / Substring?
+→ Sliding Window
+
+Range Sum?
+→ Prefix Sum
+
+Maximum Subarray Sum?
+→ Kadane
+
+Missing / Repeating?
+→ XOR
+
+Duplicate in 1..n?
+→ Floyd Cycle
+
+Majority > n/2?
+→ Moore Voting
+
+Majority > n/3?
+→ Modified Moore Voting
+
+Only 0,1,2?
+→ Dutch National Flag
+
+Count Pairs?
+→ Merge Sort Counting
+
+Ways / Min / Max?
+→ DP
+
+Grid?
+→ Grid DP
+
+Count Paths?
+→ Combinatorics
+
+Power x^n?
+→ Binary Exponentiation
+
+Top K?
+→ Heap
+
+Shortest Path?
+→ BFS
+
+Connected Components?
+→ DFS
+===================================================

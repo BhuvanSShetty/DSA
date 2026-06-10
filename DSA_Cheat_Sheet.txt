@@ -1,0 +1,537 @@
+
+1. BINARY SEARCH
+
+When to use: - Sorted array - Search space problems - First/Last
+occurrence - Lower Bound / Upper Bound
+
+Code: int low = 0, high = n - 1;
+
+while(low <= high) { int mid = low + (high - low) / 2;
+
+    if(arr[mid] == target) return mid;
+    else if(arr[mid] < target) low = mid + 1;
+    else high = mid - 1;
+
+}
+
+Complexity: Time : O(log n) Space : O(1)
+
+===================================================
+
+2. MERGE SORT
+
+When to use: - Sorting - Divide and Conquer - Base for inversion count
+and reverse pairs
+
+Code: void mergeSort(vector& arr,int low,int high) { if(low >= high)
+return;
+
+    int mid = low + (high-low)/2;
+
+    mergeSort(arr,low,mid);
+    mergeSort(arr,mid+1,high);
+
+    merge(arr,low,mid,high);
+
+}
+
+Complexity: Time : O(n log n) Space : O(n)
+
+===================================================
+
+3. COUNT INVERSIONS
+
+Condition: arr[i] > arr[j] i < j
+
+Example: [5,4,3]
+
+Inversions: (5,4) (5,3) (4,3)
+
+Key Logic: cnt += (mid - left + 1);
+
+Why? If: 6 > 4
+
+Then: 20 > 4
+
+also true because left half is sorted.
+
+Complexity: Time : O(n log n) Space : O(n)
+
+===================================================
+
+4. REVERSE PAIRS
+
+Condition: arr[i] > 2 * arr[j] i < j
+
+Example: [1,3,2,3,1]
+
+Pairs: (3,1) (3,1)
+
+Key Logic:
+
+while(right <= high && nums[i] > 2LL * nums[right]) { right++; }
+
+Complexity: Time : O(n log n) Space : O(n)
+
+===================================================
+
+5. XOR TECHNIQUE
+
+When to use: - Missing Number - Single Number - Missing and Repeating
+
+Properties:
+
+a ^ a = 0 a ^ 0 = a
+
+Example:
+
+1 ^ 2 ^ 3 ^ 2 ^ 1
+
+= 3
+
+Complexity: Time : O(n) Space : O(1)
+
+===================================================
+
+6. FLOYD CYCLE DETECTION
+
+When to use: - Find Duplicate Number - Values from 1 to n - Cannot
+modify array
+
+Code:
+
+slow = nums[0]; fast = nums[0];
+
+do { slow = nums[slow]; fast = nums[nums[fast]]; } while(slow != fast);
+
+Complexity: Time : O(n) Space : O(1)
+
+===================================================
+
+7. MOORE VOTING ALGORITHM
+
+When to use: - Majority Element - Appears > n/2 times
+
+Code:
+
+int candidate = 0; int count = 0;
+
+for(int num : nums) { if(count == 0) candidate = num;
+
+    if(num == candidate)
+        count++;
+    else
+        count--;
+
+}
+
+Complexity: Time : O(n) Space : O(1)
+
+===================================================
+
+8. MODIFIED MOORE VOTING
+
+When to use: - Majority Element II - Appears > n/3 times
+
+Keep:
+
+candidate1 candidate2
+
+count1 count2
+
+At most 2 answers can exist.
+
+Complexity: Time : O(n) Space : O(1)
+
+===================================================
+
+9. DYNAMIC PROGRAMMING (1D)
+
+When to use: - Climbing Stairs - Frog Jump - House Robber
+
+State:
+
+dp[i]
+
+Example:
+
+dp[i] = dp[i-1] + dp[i-2];
+
+===================================================
+
+10. DYNAMIC PROGRAMMING (GRID DP)
+
+When to use: - Unique Paths - Minimum Path Sum - Grid Problems
+
+State:
+
+dp[i][j]
+
+Transition:
+
+dp[i][j] = dp[i-1][j] + dp[i][j-1];
+
+===================================================
+
+11. SPACE OPTIMIZED DP
+
+When to use: - Only previous row needed
+
+Code:
+
+vector prev(n,1);
+
+for(int i=1;i<m;i++) { vector curr(n,1);
+
+    for(int j=1;j<n;j++)
+    {
+        curr[j] = curr[j-1] + prev[j];
+    }
+
+    prev = curr;
+
+}
+
+===================================================
+
+12. UNIQUE PATHS (COMBINATORICS)
+
+When to use: - Count arrangements - Count paths
+
+Formula:
+
+(m+n-2) C (m-1)
+
+Reason:
+
+Need: m-1 downs n-1 rights
+
+Choose positions of downs.
+
+Complexity: Time : O(min(m,n)) Space : O(1)
+
+===================================================
+
+13. BINARY EXPONENTIATION
+
+When to use: - x^n - Very large n
+
+Code:
+
+while(n > 0) { if(n % 2) result *= current;
+
+    current *= current;
+    n /= 2;
+
+}
+
+Complexity: Time : O(log n) Space : O(1)
+
+===================================================
+
+INTERVIEW PATTERN RECOGNITION
+
+Sorted Array -> Binary Search
+
+More than n/2 -> Moore Voting
+
+More than n/3 -> Modified Moore Voting
+
+Missing/Repetition -> XOR
+
+Duplicate in 1..n -> Floyd Cycle
+
+Grid + Count Ways -> DP
+
+Count Pairs (i<j) -> Merge Sort Counting
+
+x^n -> Binary Exponentiation
+
+Count Paths / Arrangements -> Combinatorics
+
+===================================================
+
+14. KADANE'S ALGORITHM
+
+When to use:
+
+Maximum Subarray Sum
+Largest Contiguous Sum
+Maximum Sum Segment
+
+Example:
+
+nums = {-2,1,-3,4,-1,2,1,-5,4}
+
+Answer:
+
+6
+
+Subarray:
+
+[4,-1,2,1]
+
+Code:
+
+int maxSubArray(vector<int>& nums)
+{
+    int sum = 0;
+    int maxi = INT_MIN;
+
+    for(int x : nums)
+    {
+        sum += x;
+
+        maxi = max(maxi, sum);
+
+        if(sum < 0)
+            sum = 0;
+    }
+
+    return maxi;
+}
+
+Key Idea:
+
+Negative prefix hurts future sums.
+If running sum becomes negative,
+discard it and start fresh.
+
+Complexity:
+
+Time  : O(n)
+Space : O(1)
+
+===================================================
+
+15. DUTCH NATIONAL FLAG ALGORITHM
+
+When to use:
+
+Sort Colors
+Array contains only 0,1,2
+Segregate 0s,1s,2s
+
+LeetCode:
+
+75. Sort Colors
+
+Pointers:
+
+low
+mid
+high
+
+Meaning:
+
+0 → low-1      => all 0s
+
+low → mid-1    => all 1s
+
+mid → high     => unknown
+
+high+1 → n-1   => all 2s
+
+Code:
+
+void sortColors(vector<int>& nums)
+{
+    int low = 0;
+    int mid = 0;
+    int high = nums.size()-1;
+
+    while(mid <= high)
+    {
+        if(nums[mid] == 0)
+        {
+            swap(nums[low], nums[mid]);
+            low++;
+            mid++;
+        }
+        else if(nums[mid] == 1)
+        {
+            mid++;
+        }
+        else
+        {
+            swap(nums[mid], nums[high]);
+            high--;
+        }
+    }
+}
+
+Key Idea:
+
+0 goes left
+1 stays middle
+2 goes right
+
+Complexity:
+
+Time  : O(n)
+Space : O(1)
+
+===================================================
+
+16. TWO POINTERS
+
+When to use:
+
+Sorted Array
+Pair Sum
+Remove Duplicates
+Container With Most Water
+
+Template:
+
+int left = 0;
+int right = n - 1;
+
+while(left < right)
+{
+    if(condition)
+        left++;
+    else
+        right--;
+}
+
+Complexity:
+
+Time  : O(n)
+Space : O(1)
+
+===================================================
+
+17. SLIDING WINDOW
+
+When to use:
+
+Subarray
+Substring
+Longest / Shortest
+Fixed Size Window
+
+Template:
+
+int left = 0;
+
+for(int right = 0; right < n; right++)
+{
+    while(condition_not_valid)
+    {
+        left++;
+    }
+
+    // process window
+}
+
+Examples:
+
+Longest Substring Without Repeating Characters
+Maximum Sum Subarray of Size K
+
+Complexity:
+
+Time : O(n)
+
+===================================================
+18. PREFIX SUM
+When to use
+Range Sum Queries
+Subarray Sum
+Count Subarrays
+Cumulative Sum
+Basic Idea
+
+Given:
+
+arr = [2,4,1,6,3]
+
+Prefix array:
+
+index : 0 1 2 3 4
+
+arr   : 2 4 1 6 3
+
+pref  : 2 6 7 13 16
+
+Meaning:
+
+pref[i]
+=
+sum from 0 to i
+Build Prefix Sum
+vector<int> pref(n);
+
+pref[0] = arr[0];
+
+for(int i=1;i<n;i++)
+{
+    pref[i] = pref[i-1] + arr[i];
+}
+Range Sum Query
+
+Find:
+
+sum from L to R
+
+Example:
+
+arr = [2,4,1,6,3]
+
+L = 1
+R = 3
+
+Answer:
+
+4+1+6 = 11
+
+Formula:
+
+sum(L,R)
+=
+pref[R] - pref[L-1]
+
+Code:
+
+int sum = pref[R];
+
+if(L > 0)
+    sum -= pref[L-1];
+Prefix Sum + HashMap
+Trigger
+Subarray Sum Equals K
+Count Subarrays
+Longest Subarray
+Example
+nums = [1,2,3]
+
+k = 3
+
+Subarrays:
+
+[1,2]
+[3]
+
+Answer:
+
+2
+Code
+unordered_map<int,int> mp;
+
+mp[0] = 1;
+
+int sum = 0;
+int cnt = 0;
+
+for(int x : nums)
+{
+    sum += x;
+
+    if(mp.count(sum-k))
+        cnt += mp[sum-k];
+
+    mp[sum]++;
+}
+
+===================================================
